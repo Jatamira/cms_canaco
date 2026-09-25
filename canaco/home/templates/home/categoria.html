@@ -1,0 +1,56 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block title %}Categorías{% endblock %}
+
+{% block content %}
+<div class="site-section">
+    <div class="container">
+        
+        <!-- Encabezado de la categoría -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="h3 font-weight-bold">Categoría: Tecnología</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <!-- Columna Principal: Listado de noticias de la categoría -->
+            <div class="col-lg-8">
+                
+                <!-- Tarjeta de noticia -->
+                <div class="post-entry-alt mb-4">
+                    <div class="excerpt">
+                        <div class="post-meta mb-2">
+                            <span>Fecha</span> &bull; <span>Categoría</span>
+                        </div>
+                        <h2><a href="#">Título de la noticia</a></h2>
+                        <p class="mb-3">
+                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500.
+                        </p>
+                        <p><a href="#" class="read-more">Leer más</a></p>
+                    </div>
+                </div>
+
+                <!-- Mensaje alternativo si no hay noticias -->
+                <div class="col-12">
+                    <p class="text-muted">No hay noticias para esta categoría.</p>
+                </div>
+
+            </div>
+
+            <!-- Barra Lateral (Sidebar) para listar las categorías -->
+            <div class="col-lg-4 sidebar">
+                <div class="sidebar-box">
+                    <h3 class="heading">Todas las categorías</h3>
+                    <ul class="categories list-unstyled">
+                        <li><a href="#">Tecnología</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

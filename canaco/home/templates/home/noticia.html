@@ -1,0 +1,103 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block title %}Título de la noticia{% endblock %}
+
+{% block content %}
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            
+            <!-- Columna Principal: Detalle de la Noticia -->
+            <div class="col-lg-8">
+                
+                <!-- Cabecera de la noticia -->
+                <div class="mb-4">
+                    <div class="post-meta mb-2">
+                        <span>Fecha</span> &bull; 
+                        <span>Categoría</span> &bull; 
+                        <span class="text-muted">Visitas: 4</span>
+                    </div>
+                    <h1 class="mb-4 font-weight-bold">Título de la noticia</h1>
+                </div>
+
+                <!-- Resumen o entradilla -->
+                <div class="mb-4">
+                    <p class="lead">
+                        Resumen de la noticia: Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500.
+                    </p>
+                </div>
+
+                <!-- Cuerpo de la Noticia -->
+                <div class="post-content-body mb-5">
+                    <p>Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio.</p>
+                    <p>Tiene sus raíces en una pieza clásica de la literatura del Latín, que data del año 45 antes de Cristo, haciendo que este adquiera más de 2000 años de antigüedad.</p>
+                    <p>Richard McClintock, un profesor de Latín de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua del latín, "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo distintos textos del latín, descubrió la fuente indudable. Lorem Ipsum viene de...</p>
+                </div>
+
+                <!-- Galería -->
+                <div class="pt-4 border-top mb-5">
+                    <h3 class="mb-3">Galería</h3>
+                    <p class="text-muted">Sin imágenes en galería.</p>
+                </div>
+
+                <!-- Sección de Comentarios -->
+                <div class="pt-4 border-top">
+                    <h3 class="mb-4">Comentarios</h3>
+                    
+                    <div class="comment-list mb-4">
+                        <!-- Ejemplo de comentario -->
+                        <div class="p-3 bg-light rounded mb-3">
+                            <strong>Usuario Alfredo</strong> <small class="text-muted">(Fecha)</small>
+                            <p class="mb-0 mt-1">Me gustó la noticia</p>
+                        </div>
+                        <p class="text-muted">No hay comentarios aprobados todavía.</p>
+                    </div>
+
+                    <!-- Formulario / Acceso para Comentar -->
+                    <div class="comment-form-wrap pt-3">
+                        <h4 class="mb-3">Agregar comentario</h4>
+                        <p>
+                            <a href="#" class="btn btn-primary btn-sm">Inicia sesión para comentar</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Barra Lateral (Sidebar) -->
+            <div class="col-lg-4 sidebar">
+                
+                <!-- Otras noticias -->
+                <div class="sidebar-box mb-4">
+                    <h3 class="heading">Otras noticias</h3>
+                    <div class="post-entry-sidebar">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" class="d-flex align-items-center">
+                                    <div class="text">
+                                        <h4>Título de otra noticia relacionada</h4>
+                                        <div class="post-meta">
+                                            <span>Fecha</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Categorías -->
+                <div class="sidebar-box">
+                    <h3 class="heading">Categorías</h3>
+                    <ul class="categories list-unstyled">
+                        <li><a href="#">Tecnología <span></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
