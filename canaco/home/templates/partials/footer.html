@@ -6,7 +6,8 @@
                 <div class="widget">
                     <h3 class="mb-4">Acerca de</h3>
                     <p>Muy muy lejos, detrás de las montañas de palabras, lejos de los países Vokalia y Consonantia, viven los textos ciegos.</p>
-                </div>
+                </div> <!-- /.widget -->
+                
                 <div class="widget">
                     <h3>Redes Sociales</h3>
                     <ul class="list-unstyled social">
@@ -17,8 +18,8 @@
                         <li><a href="#"><span class="icon-pinterest"></span></a></li>
                         <li><a href="#"><span class="icon-dribbble"></span></a></li>
                     </ul>
-                </div>
-            </div>
+                </div> <!-- /.widget -->
+            </div> <!-- /.col-lg-4 -->
 
             <div class="col-lg-4 ps-lg-5">
                 <div class="widget">
@@ -39,36 +40,50 @@
                         <li><a href="#">Preguntas Frecuentes</a></li>
                         <li><a href="#">Creativos</a></li>
                     </ul>
-                </div>
-            </div>
+                </div> <!-- /.widget -->
+            </div> <!-- /.col-lg-4 -->
 
             <div class="col-lg-4">
                 <div class="widget">
                     <h3 class="mb-4">Entradas Recientes</h3>
                     <div class="post-entry-footer">
-                        <ul>
+                        <ul class="list-unstyled">
+                            {% for noticia in global_recientes %}
                             <li>
-                                <a href="">
-                                    <img src="{% static 'images/img_1_sq.jpg' %}" alt="" class="me-4 rounded" style="width: 70px; height: 70px; object-fit: cover;">
+                                <a href="{% url 'home:noticia_detalle' noticia.id %}" class="d-flex align-items-center">
+                                    {% if noticia.imagen_portada %}
+                                    <img src="{{ noticia.imagen_portada.display_url }}" alt="{{ noticia.titulo }}" class="me-3 rounded" style="width: 70px; height: 70px; object-fit: cover; flex-shrink: 0;">
+                                    {% else %}
+                                    <img src="{% static 'images/img_1_sq.jpg' %}" alt="{{ noticia.titulo }}" class="me-3 rounded" style="width: 70px; height: 70px; object-fit: cover; flex-shrink: 0;">
+                                    {% endif %}
                                     <div class="text">
-                                        <h4></h4>
+                                        <h4 class="mb-1" style="font-size: 1rem; color: #fff;">{{ noticia.titulo }}</h4>
                                         <div class="post-meta">
-                                            <span class="mr-2"></span>
+                                            <span class="mr-2 text-white-50" style="font-size: 0.85rem;">{{ noticia.createdat|date:"d M, Y" }}</span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
+                            {% empty %}
                             <li><span class="text-white-50">No hay noticias recientes.</span></li>
+                            {% endfor %}
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div> <!-- /.widget -->
+            </div> <!-- /.col-lg-4 -->
+        </div> <!-- /.row -->
 
         <div class="row mt-5">
             <div class="col-12 text-center">
-                <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script>. Todos los derechos reservados. &mdash; Diseñado con amor por <a href="https://untree.co">Untree.co</a> Distribuido por <a href="https://themewagon.com">ThemeWagon</a></p>
+                <!--
+                **==========
+                NOTE:
+                Please don't remove this copyright link unless you buy the license here
+                https://untree.co/license/
+                **==========
+                -->
+                <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. Todos los derechos reservados. &mdash; Diseñado con amor por <a href="https://untree.co">Untree.co</a> Distribuido por <a href="https://themewagon.com">ThemeWagon</a></p>
             </div>
         </div>
-    </div>
-</footer>
+    </div> <!-- /.container -->
+</footer> <!-- /.site-footer -->

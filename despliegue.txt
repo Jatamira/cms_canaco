@@ -1,0 +1,35 @@
+#### Requerimientos del software
+django = 4.2
+django-mysql = 4.19.0
+mysqlclient = 2.2.8
+python = 3.14.3
+mysql = 8.0
+
+## Camandos iniciales en ubuntu de actualizacion
+apt update
+apt upgrade -y 
+
+# Instalación de python
+apt install python3-pip python3-venv python3-dev
+apt install default-libmysqlclient-dev build-essential pkg-config 
+
+# Instalacion del servidor web nginx
+apt install nginx -y
+
+# Instalación del servidor de mysql 
+apt install mysql-server -y
+
+-- levantar el servicio de mysql 
+    systemctl start mysql 
+  -- Ejecutar los scripts de seguridad
+   mysql_secure_installation
+   -- Conectar con el frontend de mysql, navicat, heidi, mysql workbeanch
+    --> En caso de no conectar, abrir el puerto en azure 
+
+# Crear carpeta del proyecto
+cd /var/www/
+mkdir canaco
+cd /var/www/canaco
+
+python3 -m venv venv
+source venv/bin/activate

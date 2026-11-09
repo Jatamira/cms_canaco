@@ -22,13 +22,15 @@
                     <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
                         <li class="active"><a href="{% url 'home:index' %}">Inicio</a></li>
                         <li class="has-children">
-                            <a href="#">Categoría</a>
-                            <ul class="dropdown">
-                                <li><a href="">Todas</a></li>
-                                <li><a href="{% url 'home:categoria' %}">Tecnología</a></li>
+                            <a href="{% url 'home:categoria' %}">Categoría</a>
+                            <ul class="dropdown">                 
+                                <!-- Aquí está el cambio clave -->
+                                {% for categoria in global_categorias %}
+                                <li><a href="{% url 'home:categoria_detalle' categoria.id %}">{{ categoria.nombre }}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
-                        <li><a href="">Perfil</a></li>
+                        <li><a href="{% url 'home:perfil' %}">Perfil</a></li>
                     </ul>
                 </div>
 
@@ -40,7 +42,7 @@
                     {% if request.user.is_authenticated %}
                         <div class="d-none d-lg-flex align-items-center justify-content-end gap-2">
                             <a href="" class="text-white"></a>
-                            <form method="post" action="">
+                            <form method="post" action="{% url 'home:logout' %}">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-sm btn-outline-light">Cerrar sesión</button>
                             </form>

@@ -63,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'home.context_processors.global_categorias',
             ],
         },
     },
@@ -74,7 +75,7 @@ WSGI_APPLICATION = 'canaco.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'canaco',
@@ -83,12 +84,12 @@ WSGI_APPLICATION = 'canaco.wsgi.application'
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
-            'charse': 'utf8mb4',
+            'charset': 'utf8mb4',
             'use_unicode': True,
             "init_command": "SET NAMES utf8mb4; SET sql_mode='STRICT_TRANS_TABLES', default_storage_engine=INNODB",
         },
     }
-}"""
+}
 
 
 # Password validation

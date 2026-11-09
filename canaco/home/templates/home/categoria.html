@@ -4,53 +4,53 @@
 {% block title %}Categorías{% endblock %}
 
 {% block content %}
-<div class="site-section">
+<section class="section">
     <div class="container">
-        
-        <!-- Encabezado de la categoría -->
         <div class="row mb-4">
-            <div class="col-12">
-                <h2 class="h3 font-weight-bold">Categoría: Tecnología</h2>
-            </div>
-        </div>
-
-        <div class="row">
-            
-            <!-- Columna Principal: Listado de noticias de la categoría -->
             <div class="col-lg-8">
-                
-                <!-- Tarjeta de noticia -->
-                <div class="post-entry-alt mb-4">
-                    <div class="excerpt">
-                        <div class="post-meta mb-2">
-                            <span>Fecha</span> &bull; <span>Categoría</span>
-                        </div>
-                        <h2><a href="#">Título de la noticia</a></h2>
-                        <p class="mb-3">
-                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500.
-                        </p>
-                        <p><a href="#" class="read-more">Leer más</a></p>
-                    </div>
-                </div>
-
-                <!-- Mensaje alternativo si no hay noticias -->
-                <div class="col-12">
-                    <p class="text-muted">No hay noticias para esta categoría.</p>
-                </div>
-
+                <h2 class="posts-entry-title">
+                    {% if categoria_actual %}Categoría: {{ categoria_actual.nombre }}{% else %}Todas las noticias{% endif %}
+                </h2>
             </div>
-
-            <!-- Barra Lateral (Sidebar) para listar las categorías -->
-            <div class="col-lg-4 sidebar">
-                <div class="sidebar-box">
-                    <h3 class="heading">Todas las categorías</h3>
-                    <ul class="categories list-unstyled">
-                        <li><a href="#">Tecnología</a></li>
-                    </ul>
-                </div>
+            
+            <div class="col-lg-4">
+                <select class="form-control" onchange="if (this.value) window.location.href=this.value;">
+                    <option value="{% url 'home:categoria' %}">Todas las categorías</option>
+                    {% for categoria in categorias %}
+                    <option value="{% url 'home:categoria_detalle' categoria.id %}" {% if categoria_actual and categoria_actual.id == categoria.id %}selected{% endif %}>{{ categoria.nombre }}</option>
+                    {% endfor %}
+                </select>
             </div>
-
         </div>
+
+        {% for noticia in publicaciones %}
+        <div class="row mb-5 align-items-center">
+            <div class="col-lg-3">
+                <a href="{% url 'home:noticia_detalle' noticia.id %}" class="img-link">
+                    {% if noticia.imagen_portada %}
+                    <img src="{{ noticia.imagen_portada.display_url }}" alt="{{ noticia.titulo }}" class="img-fluid category-post-image">
+                    {% else %}
+                    <img src="{% static 'images/img_1_horizontal.jpg' %}" alt="{{ noticia.titulo }}" class="img-fluid category-post-image">
+                    {% endif %}
+                </a>
+            </div>
+            
+            <div class="col-lg-8">
+                <span class="date">
+                    {{ noticia.createdat|date:"d M Y" }} &bullet; 
+                    {% if noticia.categoria %}{{ noticia.categoria.nombre }}{% else %}Sin categoría{% endif %}
+                </span>
+                
+                <h2><a href="{% url 'home:noticia_detalle' noticia.id %}">{{ noticia.titulo }}</a></h2>
+                
+                <p>{{ noticia.resumen }}</p>
+                
+                <p><a href="{% url 'home:noticia_detalle' noticia.id %}" class="btn btn-sm btn-outline-primary">Leer más</a></p>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay noticias para esta categoría.</p>
+        {% endfor %}
     </div>
-</div>
+</section>
 {% endblock content %}
